@@ -44,6 +44,8 @@ scp lcl_uotmmg3003s2058@teach.scinet.utoronto.ca:/scratch/l/lcl_uotmmg3003/lcl_u
 
 ## Alignment with HISAT2
 Create or download a version of the human genome which has been indexed for your particular aligner (HISAT2 in this case). HISAT2 in particular already has multiple versions available at https://registry.opendata.aws/jhu-indexes
+*Tasks will time out with limited 4 hour allocation; create and run batch scripts to avoid this.
+
 ```
 #Create a new directory in the scratch directory for the HISAT2 index
 mkdir /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_INDEX
@@ -93,6 +95,7 @@ hisat2 -p 8 --rg-id=N61311_untreated --rg SM:N61311_untreated --rg PL:ILLUMINA -
 ```
 
 ## Convert HISAT2 SAM files to BAM files
+*Tasks will time out with limited 4 hour allocation; create and run batch scripts to avoid this.
 
 ```
 #Convert SAM to BAM files
