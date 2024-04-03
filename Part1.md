@@ -90,5 +90,39 @@ hisat2 -p 8 --rg-id=N61311_Dex --rg SM:N61311_Dex --rg PL:ILLUMINA -x/scratch/l/
 
 hisat2 -p 8 --rg-id=N61311_untreated --rg SM:N61311_untreated --rg PL:ILLUMINA -x/scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_INDEX/grch38_snp_tran/genome_snp_tran --rna-strandness RF -1 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N61311_untreated_r1.fastq.gz -2 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N61311_untreated_r2.fastq.gz -S ./N61311_untreated.sam
 
+```
+
+## Convert HISAT2 SAM files to BAM files
+
+```
+#Convert SAM to BAM files
+cd /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS
+salloc -N1 -t1:00:00 --ntasks=8
+samtools sort -@ 8 -n -o N052611_Dex.bam N052611_Dex.sam
+samtools sort -@ 8 -n -o N052611_untreated.bam N052611_untreated.sam
+samtools sort -@ 8 -n -o N080611_Dex.bam N080611_Dex.sam
+samtools sort -@ 8 -n -o N080611_untreated.bam N080611_untreated.sam
+samtools sort -@ 8 -n -o N61311_Dex.bam N61311_Dex.sam
+samtools sort -@ 8 -n -o N61311_untreated.bam N61311_untreated.sam
+```
+
+## Counting Reads with HTSEQ
+
+```
+cd /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS
+
+#htseq-count --format --order --mode --stranded --minaqual --type --idattr /path_to_hisat_alignment_bam /path_to_gtf > name_of_sample.tsv
+
+htseq-count --format bam --order name --mode intersection-strict --stranded reverse --minaqual 1 --type exon --idattr gene_id /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS/N052611_Dex.bam /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_DIR/Homo_sapiens.GRCh38.86.gtf > N052611_Dex.tsv
+
+htseq-count --format bam --order name --mode intersection-strict --stranded reverse --minaqual 1 --type exon --idattr gene_id /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS/N052611_untreated.bam /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_DIR/Homo_sapiens.GRCh38.86.gtf > N052611_untreated.tsv
+
+htseq-count --format bam --order name --mode intersection-strict --stranded reverse --minaqual 1 --type exon --idattr gene_id /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS/N080611_Dex.bam /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_DIR/Homo_sapiens.GRCh38.86.gtf > N080611_Dex.tsv
+
+htseq-count --format bam --order name --mode intersection-strict --stranded reverse --minaqual 1 --type exon --idattr gene_id /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS/N080611_untreated.bam /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_DIR/Homo_sapiens.GRCh38.86.gtf > N080611_untreated.tsv
+
+htseq-count --format bam --order name --mode intersection-strict --stranded reverse --minaqual 1 --type exon --idattr gene_id /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS/N61311_Dex.bam /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_DIR/Homo_sapiens.GRCh38.86.gtf > N61311_Dex.tsv
+
+htseq-count --format bam --order name --mode intersection-strict --stranded reverse --minaqual 1 --type exon --idattr gene_id /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS/N61311_untreated.bam /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_DIR/Homo_sapiens.GRCh38.86.gtf > N61311_untreated.tsv
 
 ```
