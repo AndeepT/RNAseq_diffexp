@@ -59,6 +59,36 @@ Align the quality checked data for each sample (the FASTQ files) to the referenc
 ```
 #Create a new directory in the scratch directory
 mkdir /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS
+cd /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS
 
-#
+#Reserve server compute node
+salloc -N1 -t4:00:00 --ntasks=8
+
+#load HISAT2
+module load gcc/7.3.0 hisat2
+
+#Run HISAT2
+#hisat2 -p 8 --rg-id=HCC1395_tumor_rep1 --rg SM:HCC1395_tumor_rep1 --rg PL:ILLUMINA -x/path_to_hisat2_index --rna-strandness RF -1 /path_to_read1 -2 /path_to_read2 -S ./HCC1395_tumor_rep1.sam
+#'-p 8' tells HISAT2 to use eight CPUs for alignments.
+#'--rg-id specifies a read group ID that is a unique identifier. In this case we are looking at HCC1395_tumor_rep1.
+#'--rg SM: specifies a read group sample name. This together with rg-id will allow you to determine which reads came from which sample in the merged bam. The rg-id and SM can be different, but in our case they are the same.
+#'--rg PL:ILLUMINA' specifies the read group sequencing platform at Illumina '-x /path_to_hisat2_index/genome_snp_tran' The HISAT2 index filename prefix (minus the trailing .X.ht2). REPLACE THIS WITH THE PATH TO YOUR INDEX FILENAME PREFIX (file name minus the trailing .X.ht2)
+#'--rna-strandness RF' specifies strandness of RNAseq library. We will specify RF since the TruSeq strand-specific library was used to make these libraries.
+#'-1 /path_to/read1.fq.gz' The read 1 FASTQ file, optionally gzip(.gz) or bzip2(.bz2) compressed. REPLACE THIS WITH THE PATH TO YOUR READ1
+#'-2 /path_to/read2.fq.gz' The read 2 FASTQ file, optionally gzip(.gz) or bzip2(.bz2) compressed. REPLACE THIS WITH THE PATH TO YOUR READ2
+#'-S /path_to/output.sam' The output SAM format text file of alignments. Here I am specifying to put the SAM file in the current directory I'm in.
+
+hisat2 -p 8 --rg-id=N052611_Dex --rg SM:N052611_Dex --rg PL:ILLUMINA -x/scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_INDEX/grch38_snp_tran/genome_snp_tran --rna-strandness RF -1 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N052611_Dex_r1.fastq.gz -2 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N052611_Dex_r2.fastq.gz -S ./N052611_Dex.sam
+
+hisat2 -p 8 --rg-id=N052611_untreated --rg SM:N052611_untreated --rg PL:ILLUMINA -x/scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_INDEX/grch38_snp_tran/genome_snp_tran --rna-strandness RF -1 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N052611_untreated_r1.fastq.gz -2 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N052611_untreated_r2.fastq.gz -S ./N052611_untreated.sam
+
+hisat2 -p 8 --rg-id=N080611_Dex --rg SM:N080611_Dex --rg PL:ILLUMINA -x/scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_INDEX/grch38_snp_tran/genome_snp_tran --rna-strandness RF -1 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N080611_Dex_r1.fastq.gz -2 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N080611_Dex_r2.fastq.gz -S ./N080611_Dex.sam
+
+hisat2 -p 8 --rg-id=N080611_untreated --rg SM:N080611_untreated --rg PL:ILLUMINA -x/scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_INDEX/grch38_snp_tran/genome_snp_tran --rna-strandness RF -1 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N080611_untreated_r1.fastq.gz -2 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N080611_untreated_r2.fastq.gz -S ./N080611_untreated.sam
+
+hisat2 -p 8 --rg-id=N61311_Dex --rg SM:N61311_Dex --rg PL:ILLUMINA -x/scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_INDEX/grch38_snp_tran/genome_snp_tran --rna-strandness RF -1 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N61311_Dex_r1.fastq.gz -2 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N61311_Dex_r2.fastq.gz -S ./N61311_Dex.sam
+
+hisat2 -p 8 --rg-id=N61311_untreated --rg SM:N61311_untreated --rg PL:ILLUMINA -x/scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_INDEX/grch38_snp_tran/genome_snp_tran --rna-strandness RF -1 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N61311_untreated_r1.fastq.gz -2 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N61311_untreated_r2.fastq.gz -S ./N61311_untreated.sam
+
+
 ```
