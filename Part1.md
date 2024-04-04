@@ -119,7 +119,9 @@ nano hisat2_tasker.sh
 ## Counting Reads with HTSEQ
 
 ```
-cd /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS
+cd /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/
+mkdir AIRWAY_HTSEQ_COUNTS 
+cd /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HTSEQ_COUNTS 
 
 #htseq-count --format --order --mode --stranded --minaqual --type --idattr /path_to_hisat_alignment_bam /path_to_gtf > name_of_sample.tsv
 
