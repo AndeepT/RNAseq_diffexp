@@ -99,6 +99,7 @@ hisat2 -p 8 --rg-id=N61311_untreated --rg SM:N61311_untreated --rg PL:ILLUMINA -
 #Convert SAM to BAM files
 cd /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS
 salloc -N1 -t1:00:00 --ntasks=8
+module load gcc/7.3.0 samtools
 samtools sort -@ 8 -n -o N052611_Dex.bam N052611_Dex.sam
 samtools sort -@ 8 -n -o N052611_untreated.bam N052611_untreated.sam
 samtools sort -@ 8 -n -o N080611_Dex.bam N080611_Dex.sam
