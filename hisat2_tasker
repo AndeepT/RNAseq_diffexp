@@ -1,4 +1,6 @@
 #!/bin/bash
+#SBATCH --nodes=4
+#SBATCH --time=04:00:00
 
 module load gcc/7.3.0 hisat2
 hisat2 -p 8 --rg-id=N080611_Dex --rg SM:N080611_Dex --rg PL:ILLUMINA -x/scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_INDEX/grch38_snp_tran/genome_snp_tran --rna-strandness RF -1 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N080611_Dex_r1.fastq.gz -2 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N080611_Dex_r2.fastq.gz -S ./N080611_Dex.sam
