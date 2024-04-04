@@ -1,0 +1,11 @@
+module load gcc/7.3.0 hisat2
+hisat2 -p 8 --rg-id=N080611_Dex --rg SM:N080611_Dex --rg PL:ILLUMINA -x/scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_INDEX/grch38_snp_tran/genome_snp_tran --rna-strandness RF -1 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N080611_Dex_r1.fastq.gz -2 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N080611_Dex_r2.fastq.gz -S ./N080611_Dex.sam
+hisat2 -p 8 --rg-id=N080611_untreated --rg SM:N080611_untreated --rg PL:ILLUMINA -x/scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_INDEX/grch38_snp_tran/genome_snp_tran --rna-strandness RF -1 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N080611_untreated_r1.fastq.gz -2 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N080611_untreated_r2.fastq.gz -S ./N080611_untreated.sam
+hisat2 -p 8 --rg-id=N61311_Dex --rg SM:N61311_Dex --rg PL:ILLUMINA -x/scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_INDEX/grch38_snp_tran/genome_snp_tran --rna-strandness RF -1 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N61311_Dex_r1.fastq.gz -2 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N61311_Dex_r2.fastq.gz -S ./N61311_Dex.sam
+hisat2 -p 8 --rg-id=N61311_untreated --rg SM:N61311_untreated --rg PL:ILLUMINA -x/scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_INDEX/grch38_snp_tran/genome_snp_tran --rna-strandness RF -1 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N61311_untreated_r1.fastq.gz -2 /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_DATA/N61311_untreated_r2.fastq.gz -S ./N61311_untreated.sam
+samtools sort -@ 8 -n -o N052611_Dex.bam N052611_Dex.sam
+samtools sort -@ 8 -n -o N052611_untreated.bam N052611_untreated.sam
+samtools sort -@ 8 -n -o N080611_Dex.bam N080611_Dex.sam
+samtools sort -@ 8 -n -o N080611_untreated.bam N080611_untreated.sam
+samtools sort -@ 8 -n -o N61311_Dex.bam N61311_Dex.sam
+samtools sort -@ 8 -n -o N61311_untreated.bam N61311_untreated.sam
