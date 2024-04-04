@@ -44,7 +44,6 @@ scp lcl_uotmmg3003s2058@teach.scinet.utoronto.ca:/scratch/l/lcl_uotmmg3003/lcl_u
 
 ## Alignment with HISAT2
 Create or download a version of the human genome which has been indexed for your particular aligner (HISAT2 in this case). HISAT2 in particular already has multiple versions available at https://registry.opendata.aws/jhu-indexes
-*Tasks will time out with limited 4 hour allocation; create and run batch scripts to avoid this.
 
 ```
 #Create a new directory in the scratch directory for the HISAT2 index
@@ -95,7 +94,6 @@ hisat2 -p 8 --rg-id=N61311_untreated --rg SM:N61311_untreated --rg PL:ILLUMINA -
 ```
 
 ## Convert HISAT2 SAM files to BAM files
-*Tasks will time out with limited 4 hour allocation; create and run batch scripts to avoid this.
 
 ```
 #Convert SAM to BAM files
@@ -107,6 +105,14 @@ samtools sort -@ 8 -n -o N080611_Dex.bam N080611_Dex.sam
 samtools sort -@ 8 -n -o N080611_untreated.bam N080611_untreated.sam
 samtools sort -@ 8 -n -o N61311_Dex.bam N61311_Dex.sam
 samtools sort -@ 8 -n -o N61311_untreated.bam N61311_untreated.sam
+```
+## HISAT2 Steps Batch Script
+The HISAT2 tasks will time out with limited 4 hour allocation; create and run batch script to avoid this.
+
+```
+cd 
+nano /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS
+nano hisat2_tasker.sh
 ```
 
 ## Counting Reads with HTSEQ
