@@ -4,9 +4,9 @@
 #SBATCH --time=04:00:00
 #SBATCH --job-name=htseq_counter
 
-sbatch htseq_N052611_Dex
-sbatch htseq_N052611_untreated
-sbatch htseq_N080611_Dex
-sbatch htseq_N080611_untreated
-sbatch htseq_N61311_Dex
-sbatch htseq_N61311_untreated
+start htseq_N052611_Dex
+start htseq_N052611_untreated
+start htseq_N080611_Dex
+start htseq_N080611_untreated
+start htseq_N61311_Dex
+start htseq_N61311_untreated
