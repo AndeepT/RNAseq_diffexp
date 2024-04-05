@@ -9,4 +9,4 @@ sbatch htseq_N052611_untreated
 sbatch htseq_N080611_Dex
 sbatch htseq_N080611_untreated
 sbatch htseq_N61311_Dex
-sbatch htseq_N61311_Dex
+sbatch htseq_N61311_untreated
