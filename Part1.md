@@ -204,3 +204,14 @@ Run htseq_counter batch script
 ```
 sbatch htseq_counter
 ```
+
+## Create a count matrix
+Will merge the six HTSEQ count files into a matrix.
+
+```
+join N052611_untreated.tsv N080611_untreated.tsv | join - N61311_untreated.tsv | join - N052611_Dex.tsv | join -
+N080611_Dex.tsv | join - N61311_Dex.tsv > airway_gene_read_counts_table_all.txt
+echo "GeneID N052611_untreated N080611_untreated N61311_untreated N052611_Dex N080611_Dex N61311_Dex" >
+airway_header.txt
+cat airway_header.txt airway_gene_read_counts_table_all.txt > airway_gene_read_counts_table_all_final.txt
+```
