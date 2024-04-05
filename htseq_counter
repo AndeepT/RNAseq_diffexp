@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=8
+#SBATCH --time=08:00:00
+#SBATCH --job-name=htseq_counter
+
+htseq-count --format bam --order name --mode intersection-strict --stranded reverse --minaqual 1 --type exon --idattr gene_id /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS/N052611_Dex.bam /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_DIR/Homo_sapiens.GRCh38.86.gtf > N052611_Dex.tsv
+
+htseq-count --format bam --order name --mode intersection-strict --stranded reverse --minaqual 1 --type exon --idattr gene_id /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS/N052611_untreated.bam /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_DIR/Homo_sapiens.GRCh38.86.gtf > N052611_untreated.tsv
+
+htseq-count --format bam --order name --mode intersection-strict --stranded reverse --minaqual 1 --type exon --idattr gene_id /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS/N080611_Dex.bam /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_DIR/Homo_sapiens.GRCh38.86.gtf > N080611_Dex.tsv
+
+htseq-count --format bam --order name --mode intersection-strict --stranded reverse --minaqual 1 --type exon --idattr gene_id /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS/N080611_untreated.bam /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_DIR/Homo_sapiens.GRCh38.86.gtf > N080611_untreated.tsv
+
+htseq-count --format bam --order name --mode intersection-strict --stranded reverse --minaqual 1 --type exon --idattr gene_id /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS/N61311_Dex.bam /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_DIR/Homo_sapiens.GRCh38.86.gtf > N61311_Dex.tsv
+
+htseq-count --format bam --order name --mode intersection-strict --stranded reverse --minaqual 1 --type exon --idattr gene_id /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/AIRWAY_HISAT2_ALIGNMENTS/N61311_untreated.bam /scratch/l/lcl_uotmmg3003/lcl_uotmmg3003s2058/RNA_REF_DIR/Homo_sapiens.GRCh38.86.gtf > N61311_untreated.tsv
